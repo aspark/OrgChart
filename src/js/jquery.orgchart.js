@@ -683,7 +683,7 @@
     // create node
     createNode: function (nodeData, level, opts) {
       var that = this;
-      $.each(nodeData.children, function (index, child) {
+      nodeData.children&&$.each(nodeData.children, function (index, child) {
         child.parentId = nodeData.id;
       });
       var dtd = $.Deferred();
@@ -1098,7 +1098,7 @@
           $nodeWrapper.append(lineLayer).append($nodeLayer);
         }
         // recurse through children nodes
-        $.each($childNodes, function() {
+        $childNodes && $.each($childNodes, function() {
           var $nodeCell = isVerticalLayer ? $('<li>') : $('<td colspan="2">');
           $nodeLayer.append($nodeCell);
           that.buildHierarchy($nodeCell, this, level + 1, opts, callback);
